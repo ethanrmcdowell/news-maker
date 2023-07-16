@@ -14,9 +14,17 @@ export class AppComponent implements OnInit {
   constructor(private newsService: NewsService) {}
 
   ngOnInit() {
-    this.newsService.getData()
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+    
+    const formattedDate = `${year}-${month}-${day}`;
+    console.log(formattedDate);
+
+    this.newsService.getData(formattedDate)
       .then(data => {
-        this.data = data;
+        this.data = data.articles;
         console.log("THIS.DATA ->", this.data);
       })
       .catch(error => console.error('Error:', error));

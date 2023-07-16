@@ -1,1 +1,15 @@
-<router-outlet></router-outlet>
+<div>
+  <h3>Newsmaker</h3>
+  <div>
+    <div *ngFor="let item of data">
+      <a href="{{ item.url }}" target="_blank">
+        <p>{{ item.title }}</p>
+      </a>
+      <div class="image-container">
+        <a href="{{ item.url }}" target="_blank">
+          <img src="{{ item.urlToImage }}" class="responsive-image" />
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
